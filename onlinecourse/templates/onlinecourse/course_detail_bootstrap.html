@@ -53,9 +53,9 @@
             <!-- Course detail template changes go here -->
         {% if user.is_authenticated %}
         </br>
-        <button class="btn btn-primary" type="submit" data-toggle="collapse" data-target="exam">Start Exam</button>
+        <button class="btn btn-primary" type="submit" data-toggle="collapse" data-target="#exam">Start Exam</button>
         <div id="exam" class="collapse">
-            <form id="questionform" method="post" action="{% url 'onlinecourse:submit' course.id %}">
+            <form id="questionform" action="{% url 'onlinecourse:submit' course.id %}" method="POST">
                 <!-- loop through the courses questions -->
                 {% for question in course.question_set.all %}
                     <div class="card mt-1">
@@ -73,8 +73,9 @@
                         </div>
                     </div>
                 {% endfor %}
+                <button type="submit" class="btn btn-success" value="Submit">Submit</button>
             </form>
-            <button type="submit" class="btn btn-success" value="Submit">Submit</button>
+            
         </div>
         {% endif %}
     </div>
